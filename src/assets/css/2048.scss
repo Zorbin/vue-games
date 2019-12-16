@@ -1,0 +1,555 @@
+.app_container{
+  width: 475px;
+  margin: 0 auto;
+
+  .control_contianer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .size_control{
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      color: #ccb3a9;
+
+      .size_selection{
+        box-sizing: content-box;
+        width: 30px;
+        height: 30px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+        border: 5px solid #ccb3a9;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+    }
+
+    .game_switch{
+      padding: 20px 20px;
+      background-color: #ccb3a9;
+      font-weight: bold;
+      font-size: 20px;
+      color: #fff;
+      border-radius: 10px;
+
+    }
+  }
+
+  .game_container{
+    margin: 10px auto;
+    background-color: #bbada0;
+    border-radius: 5px;
+    padding: 15px;
+    width: 475px;
+    height: 475px;
+    position: relative;
+
+    .grid_contain{
+      position: absolute;
+
+      .grid_row{
+
+        .grid_cell{
+          width: 100px;
+          height: 100px;
+          background-color: rgba(238, 228, 218, 0.35);
+          margin-right: 15px;
+          margin-bottom: 15px;
+          float: left;
+          border-radius: 10px;
+        }
+
+        .grid_cell:last-child{
+          margin-right: 0;
+        }
+      }
+
+      .grid_row:last-child{
+        margin-bottom: 0;
+      }
+    }
+    
+    .num_contain{
+      position: absolute;
+
+      .num_cell{
+        position: absolute;
+        border-radius: 10px;
+
+        span{
+          color: #f9f6f2;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+
+      .cell-2{
+        background-color: #eee4da;
+
+        span{
+          color: #776e65;
+        }
+      }
+
+      .cell-4{
+        background-color: #ede0c8;
+        span{
+          color: #776e65;
+        }
+      }
+      
+      .cell-8{
+        background-color: #f2b179;
+      }
+
+      .cell-16{
+        background-color: #f59563;
+      }
+
+      .cell-32{
+        background-color: #f67c5f;
+      }
+
+      .cell-64{
+        background-color: #f65e3b;
+      }
+
+      .cell-128{
+        background-color: #edcf72;
+      }
+
+      .cell-256{
+        background-color: #edcc61;
+      }
+
+      .cell-512{
+        background-color: #edc850;
+      }
+
+      .cell-1024{
+        background-color: #edc53f;
+      }
+
+      .cell-2048{
+        background-color: #edc22e;
+      }
+
+      .cell-4096{
+        background-color: #eee4da;
+      }
+
+      .new {
+        animation-duration: 0.20s;
+        animation-name: newCell;
+        animation-fill-mode: forwards;
+        animation-delay: 0.15s;
+        transform: scale(0);
+
+        @keyframes newCell {
+          from {
+            transform: scale(0);
+          }
+          to {
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+
+  .boardsize3{
+    $size: size3;
+    padding: 20px;
+
+    .grid_contain{
+      .grid_row{
+        .grid_cell{
+          width: 131.666px;
+          height: 131.666px;
+          margin-right: 20px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .num_contain{
+
+      .num_cell{
+        width: 131.666px;
+        height: 131.666px;
+        line-height: 131.666px;
+        
+        span{
+          font-size: 80px;
+        }
+      }
+      // 初始位置
+      @for $i from 0 through 2 {
+        @for $j from 0 through 2 {
+          .pos#{$i}-#{$j}{
+            left: 151.666px * $j;
+            top: 151.666px * $i;
+          }
+        }
+      }
+
+      // 移动动画
+      // 纵向移动
+      @for $i from 0 through 2 {
+        @for $j from 0 through 2 {
+          $name: row_#{$i}_to_#{$j};
+
+          @if $i == $j {
+            .#{$name} {
+              top: 151.666px * $i;
+            }
+          } @else {
+            .#{$name} {
+              animation-duration: 0.3s;
+              animation-name: #{$size}_#{$name};
+              animation-fill-mode: forwards;
+            }
+
+            @keyframes #{$size}_#{$name} {
+              from {
+                top: 151.666px * $i;
+              }
+              to {
+                top: 151.666px * $j;
+              }
+            }
+          }
+        }
+      }
+
+      // 横向移动
+      @for $i from 0 through 2 {
+        @for $j from 0 through 2 {
+          $name: col_#{$i}_to_#{$j};
+
+          @if $i == $j {
+            .#{$name} {
+              left: 151.666px * $i;
+            }
+          } @else {
+            .#{$name} {
+              animation-duration: 0.3s;
+              animation-name: #{$size}_#{$name};
+              animation-fill-mode: forwards;
+            }
+
+            @keyframes #{$size}_#{$name} {
+              from {
+                left: 151.666px * $i;
+              }
+              to {
+                left: 151.666px * $j;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .boardsize4{
+    $size: size4;
+    padding: 15px;
+
+    .grid_contain{
+      .grid_row{
+        .grid_cell{
+          width: 100px;
+          height: 100px;
+          margin-right: 15px;
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    .num_contain{
+
+      .num_cell{
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+
+        span{
+          font-size: 60px;
+        }
+      }
+      // 初始位置
+      @for $i from 0 through 3 {
+        @for $j from 0 through 3 {
+          .pos#{$i}-#{$j}{
+            left: 115px * $j;
+            top: 115px * $i;
+          }
+        }
+      }
+
+      // 移动动画
+      // 纵向移动
+      @for $i from 0 through 3 {
+        @for $j from 0 through 3 {
+          $name: row_#{$i}_to_#{$j};
+
+          @if $i == $j {
+            .#{$name} {
+              top: 115px * $i;
+            }
+          } @else {
+            .#{$name} {
+              animation-duration: 0.3s;
+              animation-name: #{$size}_#{$name};
+              animation-fill-mode: forwards;
+            }
+
+            @keyframes #{$size}_#{$name} {
+              from {
+                top: 115px * $i;
+              }
+              to {
+                top: 115px * $j;
+              }
+            }
+          }
+        }
+      }
+
+      // 横向移动
+      @for $i from 0 through 3 {
+        @for $j from 0 through 3 {
+          $name: col_#{$i}_to_#{$j};
+
+          @if $i == $j {
+            .#{$name} {
+              left: 115px * $i;
+            }
+          } @else {
+            .#{$name} {
+              animation-duration: 0.3s;
+              animation-name: #{$size}_#{$name};
+              animation-fill-mode: forwards;
+            }
+
+            @keyframes #{$size}_#{$name} {
+              from {
+                left: 115px * $i;
+              }
+              to {
+                left: 115px * $j;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .boardsize5{
+    $size: size5;
+    padding: 10px;
+
+    .grid_contain{
+      .grid_row{
+        .grid_cell{
+          width: 83px;
+          height: 83px;
+          margin-right: 10px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .num_contain{
+
+      .num_cell{
+        width: 83px;
+        height: 83px;
+        line-height: 83px;
+        
+        span{
+          font-size: 48px;
+        }
+      }
+      // 初始位置
+      @for $i from 0 through 5 {
+        @for $j from 0 through 5 {
+          .pos#{$i}-#{$j}{
+            left: 93px * $j;
+            top: 93px * $i;
+          }
+        }
+      }
+
+      // 移动动画
+      // 纵向移动
+      @for $i from 0 through 5 {
+        @for $j from 0 through 5 {
+          $name: row_#{$i}_to_#{$j};
+
+          @if $i == $j {
+            .#{$name} {
+              top: 93px * $i;
+            }
+          } @else {
+            .#{$name} {
+              animation-duration: 0.3s;
+              animation-name: #{$size}_#{$name};
+              animation-fill-mode: forwards;
+            }
+
+            @keyframes #{$size}_#{$name} {
+              from {
+                top: 93px * $i;
+              }
+              to {
+                top: 93px * $j;
+              }
+            }
+          }
+        }
+      }
+
+      // 横向移动
+      @for $i from 0 through 5 {
+        @for $j from 0 through 5 {
+          $name: col_#{$i}_to_#{$j};
+
+          @if $i == $j {
+            .#{$name} {
+              left: 93px * $i;
+            }
+          } @else {
+            .#{$name} {
+              animation-duration: 0.3s;
+              animation-name: #{$size}_#{$name};
+              animation-fill-mode: forwards;
+            }
+
+            @keyframes #{$size}_#{$name} {
+              from {
+                left: 93px * $i;
+              }
+              to {
+                left: 93px * $j;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .boardsize6{
+    $size: size6;
+    padding: 5px;
+
+    .grid_contain{
+      .grid_row{
+        .grid_cell{
+          width: 73.333px;
+          height: 73.333px;
+          margin-right: 5px;
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+    .num_contain{
+
+      .num_cell{
+        width: 73.333px;
+        height: 73.333px;
+        line-height: 73.333px;
+        
+        span{
+          font-size: 40px;
+        }
+      }
+      // 初始位置
+      @for $i from 0 through 6 {
+        @for $j from 0 through 6 {
+          .pos#{$i}-#{$j}{
+            left: 78.333px * $j;
+            top: 78.333px * $i;
+          }
+        }
+      }
+
+      // 移动动画
+      // 纵向移动
+      @for $i from 0 through 6 {
+        @for $j from 0 through 6 {
+          $name: row_#{$i}_to_#{$j};
+
+          @if $i == $j {
+            .#{$name} {
+              top: 78.333px * $i;
+            }
+          } @else {
+            .#{$name} {
+              animation-duration: 0.3s;
+              animation-name: #{$size}_#{$name};
+              animation-fill-mode: forwards;
+            }
+
+            @keyframes #{$size}_#{$name} {
+              from {
+                top: 78.333px * $i;
+              }
+              to {
+                top: 78.333px * $j;
+              }
+            }
+          }
+        }
+      }
+
+      // 横向移动
+      @for $i from 0 through 6 {
+        @for $j from 0 through 6 {
+          $name: col_#{$i}_to_#{$j};
+
+          @if $i == $j {
+            .#{$name} {
+              left: 78.333px * $i;
+            }
+          } @else {
+            .#{$name} {
+              animation-duration: 0.3s;
+              animation-name: #{$size}_#{$name};
+              animation-fill-mode: forwards;
+            }
+
+            @keyframes #{$size}_#{$name} {
+              from {
+                left: 78.333px * $i;
+              }
+              to {
+                left: 78.333px * $j;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.clearfix{
+  zoom: 1;
+}
+
+.clearfix::after{
+  content: "";
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  clear: both;
+}

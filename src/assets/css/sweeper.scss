@@ -1,0 +1,84 @@
+.board{
+  border: 1px solid #888;
+  margin: 10px auto;
+
+  .chess{
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #eee;
+    float: left;
+    user-select: none;
+    font-weight: bold;
+  }
+
+  .chess:hover {
+    opacity: 0.8;
+  }
+
+  
+  .null {
+    background: #dedede;
+  }
+  
+  .number {
+    background: #dedede;
+    font-weight: bold;
+  }
+
+  .isNotCheck {
+    background-color: #888;
+  }
+
+  .flag {
+    background-image: url('~@/assets/images/flag.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 70% 70%;
+  }
+
+  .mine{
+    background: url('~@/assets/images/mine.png') no-repeat center center;
+    background-size: 80% 80%;
+  }
+
+  .mine_error{
+    background: url('~@/assets/images/mine_error.png') no-repeat center center;
+    background-size: 80% 80%;
+  }
+
+  .isTip {
+    background: rgb(204, 204, 190);
+  }
+}
+
+.simple_board {
+  width: 302px;
+}
+
+.normal_board {
+  width: 452px;
+}
+
+.difficult_board {
+  width: 602px;
+}
+
+.mode{
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.clearfix{
+  zoom: 1;
+}
+
+.clearfix:after{
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
