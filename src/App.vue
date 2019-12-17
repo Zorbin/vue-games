@@ -7,6 +7,8 @@
 <style lang="scss">
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 #app {
@@ -28,5 +30,18 @@
       color: #42b983;
     }
   }
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  clear: both;
 }
 </style>

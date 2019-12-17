@@ -58,9 +58,9 @@ export default {
         addText -= step;
         this.curScore = numText;
         if (this.curScore > this.getBestScore) {
-        this.$store.commit("setBestScore", this.curScore);
-      }
-      }
+          this.$store.commit("setBestScore", this.curScore);
+        }
+      };
       numSlide();
     }
   }
@@ -69,7 +69,7 @@ export default {
 
 <style lang="scss" scpoed>
 .score_container {
-  margin: 20px 0;
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
 
@@ -79,8 +79,8 @@ export default {
     padding: 10px;
     color: #fff;
     border-radius: 10px;
-    background-color: #ccb3a9;
-    box-shadow: #c2a59a 0 10px 10px;
+    background-color: #ff6f3c;
+    box-shadow: #d45839 0 7px 10px;
   }
 
   .myscore {
@@ -89,7 +89,7 @@ export default {
 
     div {
       padding: 5px 30px;
-      background-color: #bbb;
+      background-color: #98b7d7;
       margin-left: 20px;
       border-radius: 10px;
       font-weight: bold;

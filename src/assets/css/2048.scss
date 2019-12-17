@@ -1,6 +1,7 @@
 .app_container{
   width: 475px;
   margin: 0 auto;
+  padding-top: 20px;
 
   .control_contianer{
     display: flex;
@@ -11,7 +12,7 @@
       display: flex;
       align-items: center;
       font-weight: bold;
-      color: #ccb3a9;
+      color: #f97350;
 
       .size_selection{
         box-sizing: content-box;
@@ -21,20 +22,26 @@
         justify-content: center;
         align-items: center;
         border-radius: 50px;
-        border: 5px solid #ccb3a9;
+        border: 5px solid #f97350;
         margin: 0 10px;
         cursor: pointer;
+        font-size: 18px;
+      }
+
+      .curSize{
+        background-color: #f97350;
+        color: #fff;
       }
     }
 
     .game_switch{
       padding: 20px 20px;
-      background-color: #ccb3a9;
+      background-color: #6c98c6;
       font-weight: bold;
       font-size: 20px;
       color: #fff;
       border-radius: 10px;
-
+      cursor: pointer;
     }
   }
 
@@ -78,6 +85,7 @@
       .num_cell{
         position: absolute;
         border-radius: 10px;
+        box-shadow: #777 1px 3px 5px;
 
         span{
           color: #f9f6f2;
@@ -186,6 +194,10 @@
           font-size: 80px;
         }
       }
+
+      .cell-128 span, .cell-256 span{
+        font-size: 65px;
+      }
       // 初始位置
       @for $i from 0 through 2 {
         @for $j from 0 through 2 {
@@ -281,6 +293,15 @@
           font-size: 60px;
         }
       }
+
+      .cell-128 span, .cell-256 span, .cell-512 span{
+        font-size: 50px;
+      }
+
+      .cell-1024 span, .cell-2048 span{
+        font-size: 40px;
+      }
+
       // 初始位置
       @for $i from 0 through 3 {
         @for $j from 0 through 3 {
@@ -375,6 +396,14 @@
         span{
           font-size: 48px;
         }
+      }
+
+      .cell-128 span, .cell-256 span, .cell-512 span{
+        font-size: 40px;
+      }
+
+      .cell-1024 span, .cell-2048 span, .cell-4096 span{
+        font-size: 32px;
       }
       // 初始位置
       @for $i from 0 through 5 {
@@ -471,6 +500,14 @@
           font-size: 40px;
         }
       }
+
+      .cell-128 span, .cell-256 span, .cell-512 span{
+        font-size: 37px;
+      }
+
+      .cell-1024 span, .cell-2048 span, .cell-4096 span, .cell-8192 span{
+        font-size: 28px;
+      }
       // 初始位置
       @for $i from 0 through 6 {
         @for $j from 0 through 6 {
@@ -539,17 +576,4 @@
       }
     }
   }
-}
-
-.clearfix{
-  zoom: 1;
-}
-
-.clearfix::after{
-  content: "";
-  display: block;
-  height: 0;
-  line-height: 0;
-  visibility: hidden;
-  clear: both;
 }

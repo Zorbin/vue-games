@@ -4,11 +4,19 @@
     <div class="control_contianer">
       <div class="size_control">
         <span>Size:</span>
-        <div class="size_selection" @click="selectBoardSize(size.size)" v-for="(size, index) in sizeSelection" :key="index">
+        <div
+          class="size_selection"
+          :class="boardSize == size.size ? 'curSize' : ''"
+          @click="selectBoardSize(size.size)"
+          v-for="(size, index) in sizeSelection"
+          :key="index"
+        >
           <span>{{ size.size }}</span>
         </div>
       </div>
-      <div class="game_switch" @click="gameSwitchHandler">{{ gameIsOver ? "新游戏" : "结束游戏" }}</div>
+      <div class="game_switch" @click="gameSwitchHandler">
+        {{ gameIsOver || win || isloss ? "新游戏" : "结束游戏" }}
+      </div>
     </div>
     <div :class="`game_container boardsize${boardSize}`">
       <div class="grid_contain">
@@ -99,7 +107,7 @@ export default {
       sizeSelection[6] = size6;
     },
     // 选择棋盘尺寸
-    selectBoardSize(size){
+    selectBoardSize(size) {
       this.boardSize = size;
       this.initBoard();
     },
@@ -153,7 +161,11 @@ export default {
         this.boardData = this.rotateLeft(this.boardData);
       }
       if (hasChanged) {
-        for (let i = 0; i < this.sizeSelection[this.boardSize].timesForRand; i++) {
+        for (
+          let i = 0;
+          i < this.sizeSelection[this.boardSize].timesForRand;
+          i++
+        ) {
           this.createRandCell();
         }
       }
@@ -241,7 +253,7 @@ export default {
       } else {
         this.endThisGame();
       }
-    },
+    }
   },
   computed: {
     // 筛选有数据的节点
